@@ -5,10 +5,7 @@ import org.example.my_jira_boot.general.Result;
 import org.example.my_jira_boot.general.ResultUtil;
 import org.example.my_jira_boot.service.RequirementService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -23,5 +20,18 @@ public class RequirementController {
         List<Requirement> requirments = requirementService.getRequirments(ownerId);
         return ResultUtil.success(requirments);
     }
+
+    @PostMapping("/add/requirement")
+    public Result<Requirement> addRequirement(@RequestBody Requirement requirement){
+        Requirement requirement1 = requirementService.addRequirement(requirement);
+        return ResultUtil.success(requirement1);
+    }
+
+    @PostMapping("/update/requirement")
+    public Result<Requirement> updateRequirement(@RequestBody Requirement requirement){
+        Requirement requirement1 = requirementService.updateRequirement(requirement);
+        return ResultUtil.success(requirement1);
+    }
+
 
 }

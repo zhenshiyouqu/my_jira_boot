@@ -17,6 +17,18 @@ public class RequirementService {
         //get requirments by userId
         List<Requirement> requirements = requirementMapper.selectList(new QueryWrapper<Requirement>().eq("owner_id", ownerId));
         return requirements;
-
     }
+
+    public Requirement addRequirement(Requirement requirement){
+        //add requirement
+        requirementMapper.insert(requirement);
+        return requirement;
+    }
+
+    public Requirement updateRequirement(Requirement requirement){
+        //update requirement
+        requirementMapper.updateById(requirement);
+        return requirement;
+    }
+
 }
