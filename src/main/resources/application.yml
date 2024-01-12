@@ -20,4 +20,6 @@ spring:
         prepStmtCacheSize: 250
         prepStmtCacheSqlLimit: 2048
         useServerPrepStmts: true
-
+logging:
+  level:
+    com.baomidou.mybatisplus: debug

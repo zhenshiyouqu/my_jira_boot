@@ -2,12 +2,13 @@
 <project version="4">
   <component name="CamelCaseConfig">
     <option name="cb1State" value="false" />
+    <option name="cb2State" value="false" />
     <option name="cb6State" value="false" />
     <option name="cb7State" value="false" />
     <option name="model">
       <array>
-        <option value="snake_case" />
         <option value="camelCase" />
+        <option value="snake_case" />
         <option value="CamelCase" />
         <option value="kebab-case" />
         <option value="SNAKE_CASE" />

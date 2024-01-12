@@ -51,34 +51,75 @@ create table owner
 # - `Due_Date`：BUG计划解决的截止日期。
 # - `Related_Issues`：相关问题、需求或其他BUG的引用链接。
 
-create table bug
-(
-    id             INT AUTO_INCREMENT PRIMARY KEY,
-    title          VARCHAR(255),
-    description    VARCHAR(255),
-    status         VARCHAR(255),
-    priority       VARCHAR(255),
-    severity       VARCHAR(255),
-    creator_id     INT,
-    relavant_id    INT,
-    create_time    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    update_time    TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    resolution     VARCHAR(255),
-    attachments    VARCHAR(255),
-    comments_id    INT,
-    requirement_id INT,
-    environment    VARCHAR(255),
-    version        VARCHAR(255),
-    related_issues VARCHAR(255)
-);
+CREATE TABLE `bug` (
+                       `id` int NOT NULL AUTO_INCREMENT,
+                       `title` varchar(255) DEFAULT NULL,
+                       `description` varchar(255) DEFAULT NULL,
+                       `status` varchar(255) DEFAULT NULL,
+                       `priority` varchar(255) DEFAULT NULL,
+                       `damage` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+                       `creator_id` int DEFAULT NULL,
+                       `relavant_id` int DEFAULT NULL,
+                       `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+                       `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                       `resolution` varchar(255) DEFAULT NULL,
+                       `comments_id` int DEFAULT NULL,
+                       `requirement_id` int DEFAULT NULL,
+                       `env` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+                       `version` varchar(255) DEFAULT NULL,
+                       `related_issues` varchar(255) DEFAULT NULL,
+                       `processor_id` int NOT NULL,
+                       `identifier_id` int NOT NULL,
+                       PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 # 向bug表插入数据，default表示使用默认值，description尽量200个字符
-insert into bug (title, description, status, priority, severity, creator_id, relavant_id, resolution, attachments, comments_id, requirement_id, environment, version, related_issues)
-values ('bug1', 'bug1', 'new', 'low', 'low', 1, 1, 'fixed', 'default', 1, 1, 'test', '1.0', 'default');
+insert into bug (title, description, status, priority, damage, creator_id, relavant_id, resolution, comments_id, requirement_id, env, version, related_issues, processor_id, identifier_id) values ('bug1', 'bug1', 'new', 'low', 'low', 1, 1, 'default', 1, 1, 'default', 'default', 'default', 1, 1);
 
 
 
+# 新增文件表，用于存储文件信息
+create table file
+(
+    id          INT AUTO_INCREMENT PRIMARY KEY,
+    link_id     INT,
+    name        VARCHAR(255),
+    path        VARCHAR(255),
+    type        VARCHAR(255),
+    size        VARCHAR(255),
+    create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
 
+# 新增用户表，用于存储用户信息
+create table user
+(
+    id          INT AUTO_INCREMENT PRIMARY KEY,
+    name        VARCHAR(255),
+    account     VARCHAR(255),
+    password    VARCHAR(255),
+    email       VARCHAR(255),
+    phone       VARCHAR(255),
+    avatar      VARCHAR(255),
+    role        VARCHAR(255),
+    status      VARCHAR(255),
+    create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+# 给user表，和字段加中文注释
+alter table user comment '用户表';
+alter table user modify column id int comment '用户id';
+alter table user modify column name varchar(255) comment '用户姓名';
+alter table user modify column account varchar(255) comment '用户账号';
+alter table user modify column password varchar(255) comment '用户密码';
+alter table user modify column email varchar(255) comment '用户邮箱';
+alter table user modify column phone varchar(255) comment '用户电话';
+alter table user modify column avatar varchar(255) comment '用户头像';
+alter table user modify column role varchar(255) comment '用户角色:admin-管理员,developer-开发者,tester-测试人员,product-产品经理';
+alter table user modify column status varchar(255) comment '用户状态:0-禁用,1-启用';
+alter table user modify column create_time timestamp comment '创建时间';
+alter table user modify column update_time timestamp comment '更新时间';
 
+# 给user表添加数据
 
 
 

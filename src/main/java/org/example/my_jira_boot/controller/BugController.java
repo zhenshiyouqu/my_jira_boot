@@ -1,5 +1,6 @@
 package org.example.my_jira_boot.controller;
 
+import lombok.extern.log4j.Log4j2;
 import org.example.my_jira_boot.PO.Bug;
 import org.example.my_jira_boot.general.Result;
 import org.example.my_jira_boot.general.ResultUtil;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RequestMapping(path = "/bug")
 @RestController
+@Log4j2
 public class BugController {
     @Resource
     private BugService bugService;
