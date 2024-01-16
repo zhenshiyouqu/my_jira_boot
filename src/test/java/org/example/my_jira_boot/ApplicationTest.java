@@ -1,8 +1,8 @@
 package org.example.my_jira_boot;
 
-import org.example.my_jira_boot.PO.Bug;
 import org.example.my_jira_boot.PO.Requirement;
 import org.example.my_jira_boot.controller.BugController;
+import org.example.my_jira_boot.controller.PlanController;
 import org.example.my_jira_boot.controller.RequirementController;
 import org.example.my_jira_boot.mapper.RequirementMapper;
 import org.junit.jupiter.api.Test;
@@ -18,6 +18,8 @@ public class ApplicationTest {
     private RequirementController requirementController;
     @Resource
     private BugController bugController;
+    @Resource
+    private PlanController planController;
     @Test
     public void testMybatis(){
         Requirement requirement = requirementMapper.selectById(1);
@@ -35,29 +37,11 @@ public class ApplicationTest {
         System.out.println(bugController.getBugs(1));
     }
 
-    //测试org.example.my_jira_boot.controller.BugController.addBug
     @Test
-    public void testAddBug(){
-        Bug bug = new Bug();
-        bug.setCreatorId(1);
-        bug.setRelavantId(1);
-        bug.setProcessorId(1);
-        bug.setIdentifierId(1);
-        bug.setTitle("test");
-        bug.setDescription("test");
-        bug.setStatus("test");
-        bug.setPriority("test");
-        bug.setDamage("test");
-        bug.setResolution("test");
-        bug.setCommentsId(1);
-        bug.setRequirementId(1);
-        bug.setEnv("test");
-        bug.setVersion("test");
-        bug.setRelatedIssues("test");
-        System.out.println(bugController.addBug(bug));
-
-
+    public void testGetPlan() {
+        System.out.println(planController.getPlan(1));
     }
+
 
 
 }

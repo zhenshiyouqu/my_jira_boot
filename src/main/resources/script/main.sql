@@ -122,6 +122,51 @@ alter table user modify column update_time timestamp comment '更新时间';
 # 给user表添加数据
 
 
+# //创建Plan类的表
+# public class Plan {
+#     @TableId
+#     private Integer id;
+#     private String title;
+#     private String description;
+#     private String linkWorkId;
+#     private String linkWorkType;
+#     private Date expectedDateFrom;
+#     private Date expectedDateTo;
+#     private Date actualDateFrom;
+#     private Date actualDateTo;
+#     private Integer expectedDays;
+#     private Integer actualDays;
+#     private String principalId;
+#     private String creatorId;
+#     private String status;
+#     private String tags;
+#     private Date createDate;
+#     private Date lastUpdateDate;
+# }
+
+CREATE TABLE `plan` (
+                       `id` int NOT NULL AUTO_INCREMENT,
+                       `title` varchar(255) DEFAULT NULL,
+                       `description` varchar(255) DEFAULT NULL,
+                       `link_work_id` varchar(255) DEFAULT NULL,
+                       `link_work_type` varchar(255) DEFAULT NULL,
+                       `expected_date_from` datetime DEFAULT NULL,
+                       `expected_date_to` datetime DEFAULT NULL,
+                       `actual_date_from` datetime DEFAULT NULL,
+                       `actual_date_to` datetime DEFAULT NULL,
+                       `expected_days` int DEFAULT NULL,
+                       `actual_days` int DEFAULT NULL,
+                       `principal_id` int DEFAULT NULL,
+                       `creator_id` int DEFAULT NULL,
+                       `status` varchar(255) DEFAULT NULL,
+                       `tags` varchar(255) DEFAULT NULL,
+                       `create_date` datetime DEFAULT NULL,
+                       `last_update_date` datetime DEFAULT NULL,
+                       PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+# 向plan表插入mock数据
+insert into plan (title, description, link_work_id, link_work_type, expected_date_from, expected_date_to, actual_date_from, actual_date_to, expected_days, actual_days, principal_id, creator_id, status, tags, create_date, last_update_date) values ('plan1', 'plan1', '1', '1', '2020-12-01 00:00:00', '2020-12-01 00:00:00', '2020-12-01 00:00:00', '2020-12-01 00:00:00', 1, 1, 1, 1, '1', '1', '2020-12-01 00:00:00', '2020-12-01 00:00:00');
 
 
 
