@@ -1,9 +1,13 @@
 package org.example.my_jira_boot.PO;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @Data
-public class Owner {
+@TableName("user")
+public class User {
+    @TableId
     private Integer id;
     private String name;
     private String password;

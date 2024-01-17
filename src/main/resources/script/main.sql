@@ -119,8 +119,8 @@ alter table user modify column status varchar(255) comment '用户状态:0-禁�
 alter table user modify column create_time timestamp comment '创建时间';
 alter table user modify column update_time timestamp comment '更新时间';
 
-# 给user表添加数据
-
+# 给user表添加mock数据
+insert into user (name, account, password, email, phone, avatar, role, status) values ('admin', 'admin', 'admin', '2463640722@qq.com', '12345678901', 'default', 'admin', '1');
 
 # //创建Plan类的表
 # public class Plan {
@@ -169,5 +169,24 @@ CREATE TABLE `plan` (
 insert into plan (title, description, link_work_id, link_work_type, expected_date_from, expected_date_to, actual_date_from, actual_date_to, expected_days, actual_days, principal_id, creator_id, status, tags, create_date, last_update_date) values ('plan1', 'plan1', '1', '1', '2020-12-01 00:00:00', '2020-12-01 00:00:00', '2020-12-01 00:00:00', '2020-12-01 00:00:00', 1, 1, 1, 1, '1', '1', '2020-12-01 00:00:00', '2020-12-01 00:00:00');
 
 
+# requirement表和user表关联，一个需求有多个角色role，字段有：requirement_id, user_id, role, create_time, update_time
+CREATE TABLE `requirement_user` (
+                                  `id` int NOT NULL AUTO_INCREMENT,
+                                  `requirement_id` int DEFAULT NULL,
+                                  `user_id` int DEFAULT NULL,
+                                  `role` varchar(255) DEFAULT NULL,
+                                  `create_time` datetime DEFAULT NULL,
+                                  `update_time` datetime DEFAULT NULL,
+                                  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+# 给每个字段添加注释
+alter table requirement_user comment '需求和用户关联表';
+alter table requirement_user modify column id int comment 'id';
+alter table requirement_user modify column requirement_id int comment '需求id';
+alter table requirement_user modify column user_id int comment '用户id';
+alter table requirement_user modify column role varchar(255) comment '角色：developer-开发者,tester-测试人员,product-产品经理，设计：designer';
+alter table requirement_user modify column create_time timestamp comment '创建时间';
+alter table requirement_user modify column update_time timestamp comment '更新时间';
 
-
+# 给requirement_user表添加mock数据
+insert into requirement_user (requirement_id, user_id, role) values (1, 1, 'developer');

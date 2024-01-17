@@ -6,12 +6,12 @@ import java.util.List;
 @Data
 public class GeneralBoardCard {
     private String title;
-    private List<cardItem> cardItems;
+    private List<CardItem> cardItems;
 }
 
 
 @Data
-class cardItem {
+class CardItem {
     private String description;
     private Integer linkWorkId;
     private String type;
