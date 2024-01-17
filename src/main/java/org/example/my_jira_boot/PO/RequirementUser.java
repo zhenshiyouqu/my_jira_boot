@@ -9,9 +9,9 @@ import lombok.Data;
 public class RequirementUser {
     @TableId
     private Integer id;
-    private Integer requirement_id;
-    private Integer user_id;
+    private Integer requirementId;
+    private Integer userId;
     private String role;
-    private String create_time;
-    private String update_time;
+    private String createTime;
+    private String updateTime;
 }
