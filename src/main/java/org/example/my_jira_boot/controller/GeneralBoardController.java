@@ -2,6 +2,7 @@ package org.example.my_jira_boot.controller;
 
 import org.example.my_jira_boot.VO.GeneralBoardCard;
 import org.example.my_jira_boot.general.Result;
+import org.example.my_jira_boot.general.ResultUtil;
 import org.example.my_jira_boot.service.GeneralBoardService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +19,9 @@ public class GeneralBoardController {
 
     @RequestMapping(path = "/getCardList")
     public Result<List<GeneralBoardCard>> getCardList(@RequestParam( "userId") Integer userId){
-        return null;
+        List<GeneralBoardCard> cardList = generalBoardService.getCardList(userId);
+        return ResultUtil.success(cardList);
     }
+
 
 }

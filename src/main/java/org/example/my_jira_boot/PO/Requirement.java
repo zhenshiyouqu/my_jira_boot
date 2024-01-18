@@ -5,10 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
 
-import javax.persistence.*;
 import java.sql.Date;
 
 @Data
@@ -19,7 +16,7 @@ public class Requirement {
     @TableId(type = IdType.AUTO)
     private Integer id;
 
-    private String requirement_name;
+    private String requirementName;
 
     private Integer detailId;
 
@@ -35,8 +32,8 @@ public class Requirement {
 
     private Date createTime;
 
-    private Date last_updated_time;
+    private Date lastUpdatedTime;
 
-    private String last_update;
+    private String lastUpdate;
 
 }

@@ -9,10 +9,3 @@ public class GeneralBoardCard {
     private List<CardItem> cardItems;
 }
 
-
-@Data
-class CardItem {
-    private String description;
-    private Integer linkWorkId;
-    private String type;
-}

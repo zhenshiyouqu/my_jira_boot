@@ -2,6 +2,7 @@ package org.example.my_jira_boot;
 
 import org.example.my_jira_boot.PO.Requirement;
 import org.example.my_jira_boot.controller.BugController;
+import org.example.my_jira_boot.controller.GeneralBoardController;
 import org.example.my_jira_boot.controller.PlanController;
 import org.example.my_jira_boot.controller.RequirementController;
 import org.example.my_jira_boot.mapper.RequirementMapper;
@@ -20,6 +21,10 @@ public class ApplicationTest {
     private BugController bugController;
     @Resource
     private PlanController planController;
+
+    @Resource
+    private GeneralBoardController generalBoardController;
+
     @Test
     public void testMybatis(){
         Requirement requirement = requirementMapper.selectById(1);
@@ -42,6 +47,10 @@ public class ApplicationTest {
         System.out.println(planController.getPlan(1));
     }
 
+    @Test
+    public void generalBoardControllerTest() {
+        System.out.println(generalBoardController.getCardList(1));
+    }
 
 
 }

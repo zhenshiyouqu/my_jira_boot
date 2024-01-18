@@ -29,7 +29,7 @@ public class Plan {
     private Integer id;
     private String title;
     private String description;
-    private String linkWorkId;
+    private Integer linkWorkId;
     private String linkWorkType;
     private Date expectedDateFrom;
     private Date expectedDateTo;
@@ -37,8 +37,8 @@ public class Plan {
     private Date actualDateTo;
     private Integer expectedDays;
     private Integer actualDays;
-    private String principalId;
-    private String creatorId;
+    private Integer principalId;
+    private Integer creatorId;
     private String status;
     private String tags;
     private Date createDate;
