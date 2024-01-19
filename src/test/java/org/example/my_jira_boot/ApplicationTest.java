@@ -1,10 +1,8 @@
 package org.example.my_jira_boot;
 
 import org.example.my_jira_boot.PO.Requirement;
-import org.example.my_jira_boot.controller.BugController;
-import org.example.my_jira_boot.controller.GeneralBoardController;
-import org.example.my_jira_boot.controller.PlanController;
-import org.example.my_jira_boot.controller.RequirementController;
+import org.example.my_jira_boot.PO.User;
+import org.example.my_jira_boot.controller.*;
 import org.example.my_jira_boot.mapper.RequirementMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,6 +22,9 @@ public class ApplicationTest {
 
     @Resource
     private GeneralBoardController generalBoardController;
+
+    @Resource
+    private LoginController loginController;
 
     @Test
     public void testMybatis(){
@@ -50,6 +51,14 @@ public class ApplicationTest {
     @Test
     public void generalBoardControllerTest() {
         System.out.println(generalBoardController.getCardList(1));
+    }
+
+    @Test
+    public void testLogin() {
+        User user = new User();
+        user.setAccount("admin");
+        user.setPassword("admin");
+        System.out.println(loginController.login(user));
     }
 
 
