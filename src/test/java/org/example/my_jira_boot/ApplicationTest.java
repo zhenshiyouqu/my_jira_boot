@@ -61,5 +61,12 @@ public class ApplicationTest {
         System.out.println(loginController.login(user));
     }
 
+    @Test
+    public void testRegister() {
+        User user = new User();
+        user.setAccount("bob");
+        user.setPassword("1");
+        System.out.println(loginController.register(user));
+    }
 
 }

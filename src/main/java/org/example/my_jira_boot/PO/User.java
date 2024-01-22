@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+
 //  `id` int NOT NULL AUTO_INCREMENT COMMENT '用户id',
 //  `name` varchar(255) DEFAULT NULL COMMENT '用户姓名',
 //  `account` varchar(255) DEFAULT NULL COMMENT '用户账号',
@@ -21,8 +23,11 @@ import lombok.Data;
 public class User {
     @TableId
     private Integer id;
+    @NotBlank
     private String name;
+    @NotBlank
     private String account;
+    @NotBlank
     private String password;
     private String email;
     private String phone;

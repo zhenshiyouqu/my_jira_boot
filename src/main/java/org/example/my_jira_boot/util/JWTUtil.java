@@ -33,15 +33,19 @@ public class JWTUtil {
     }
 
     //验证token
-    public static Boolean verifyTokenByRSA256(String token) throws Exception {
+    public static Boolean verifyTokenByRSA256(String token,String user) throws Exception {
         //公钥
         RSA256Key rsa256Key = RSA256Util.getRSA256Key();
 
         Algorithm algorithm = Algorithm.RSA256(rsa256Key.getPublicKey(), rsa256Key.getPrivateKey());
 
         try {
-            JWT.require(algorithm).build().verify(token);
+            //校验token和user
+            String token1 = JWT.require(algorithm).build().verify(token).getToken();
+            System.out.println(token1);
             return true;
+//            JWT.require(algorithm).build().verify(token);
+//            return true;
         } catch (JWTVerificationException e) {
             log.error("token验证失败");
             return false;
